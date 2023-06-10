@@ -64,7 +64,35 @@
 					"strict" : false
 				},
 				{
-					"name" : "indicator[7]",
+					"name" : "indicator_choise[0]",
+					"strict" : false
+				},
+				{
+					"name" : "indicator_choise[1]",
+					"strict" : false
+				},
+				{
+					"name" : "indicator_choise[2]",
+					"strict" : false
+				},
+				{
+					"name" : "indicator_choise[3]",
+					"strict" : false
+				},
+				{
+					"name" : "indicator_choise[4]",
+					"strict" : false
+				},
+				{
+					"name" : "indicator_choise[5]",
+					"strict" : false
+				},
+				{
+					"name" : "indicator_choise[6]",
+					"strict" : false
+				},
+				{
+					"name" : "indicator_choise[7]",
 					"strict" : false
 				},
 				{

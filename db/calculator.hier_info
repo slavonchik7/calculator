@@ -12,38 +12,123 @@ key_in[6] => save_key_in_reg[2].DATAIN
 key_in[7] => line_index.DATAB
 key_in[7] => column_index.DATAA
 key_in[7] => save_key_in_reg[3].DATAIN
-key_out[0] <= key_out_reg[0].DB_MAX_OUTPUT_PORT_TYPE
-key_out[1] <= key_out_reg[1].DB_MAX_OUTPUT_PORT_TYPE
-key_out[2] <= key_out_reg[2].DB_MAX_OUTPUT_PORT_TYPE
-key_out[3] <= key_out_reg[3].DB_MAX_OUTPUT_PORT_TYPE
-led[0] <= led_reg[0].DB_MAX_OUTPUT_PORT_TYPE
-led[1] <= led_reg[1].DB_MAX_OUTPUT_PORT_TYPE
-led[2] <= led_reg[2].DB_MAX_OUTPUT_PORT_TYPE
-led[3] <= led_reg[3].DB_MAX_OUTPUT_PORT_TYPE
-led[4] <= led_reg[4].DB_MAX_OUTPUT_PORT_TYPE
-led[5] <= led_reg[5].DB_MAX_OUTPUT_PORT_TYPE
-led[6] <= led_reg[6].DB_MAX_OUTPUT_PORT_TYPE
-led[7] <= led_reg[7].DB_MAX_OUTPUT_PORT_TYPE
-indicator[0] <= indicator[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-indicator[1] <= indicator[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-indicator[2] <= indicator[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-indicator[3] <= indicator[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-indicator[4] <= indicator[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-indicator[5] <= indicator[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-indicator[6] <= indicator[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-indicator[7] <= indicator[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-indicator_choise[0] <= indicator_choise[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-indicator_choise[1] <= indicator_choise[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-indicator_choise[2] <= indicator_choise[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-indicator_choise[3] <= indicator_choise[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-indicator_choise[4] <= indicator_choise[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-indicator_choise[5] <= indicator_choise[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-indicator_choise[6] <= indicator_choise[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-indicator_choise[7] <= indicator_choise[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+key_out[0] << key_out_reg[0].DB_MAX_OUTPUT_PORT_TYPE
+key_out[1] << key_out_reg[1].DB_MAX_OUTPUT_PORT_TYPE
+key_out[2] << key_out_reg[2].DB_MAX_OUTPUT_PORT_TYPE
+key_out[3] << key_out_reg[3].DB_MAX_OUTPUT_PORT_TYPE
+led[0] << led_reg[0].DB_MAX_OUTPUT_PORT_TYPE
+led[1] << led_reg[1].DB_MAX_OUTPUT_PORT_TYPE
+led[2] << led_reg[2].DB_MAX_OUTPUT_PORT_TYPE
+led[3] << led_reg[3].DB_MAX_OUTPUT_PORT_TYPE
+led[4] << led_reg[4].DB_MAX_OUTPUT_PORT_TYPE
+led[5] << led_reg[5].DB_MAX_OUTPUT_PORT_TYPE
+led[6] << led_reg[6].DB_MAX_OUTPUT_PORT_TYPE
+led[7] << led_reg[7].DB_MAX_OUTPUT_PORT_TYPE
+indicator[0] << draw_screen:comb_15.indicator
+indicator[1] << draw_screen:comb_15.indicator
+indicator[2] << draw_screen:comb_15.indicator
+indicator[3] << draw_screen:comb_15.indicator
+indicator[4] << draw_screen:comb_15.indicator
+indicator[5] << draw_screen:comb_15.indicator
+indicator[6] << draw_screen:comb_15.indicator
+indicator[7] << draw_screen:comb_15.indicator
+indicator_choise[0] << draw_screen:comb_15.indicator_choice
+indicator_choise[1] << draw_screen:comb_15.indicator_choice
+indicator_choise[2] << draw_screen:comb_15.indicator_choice
+indicator_choise[3] << draw_screen:comb_15.indicator_choice
+indicator_choise[4] << draw_screen:comb_15.indicator_choice
+indicator_choise[5] << draw_screen:comb_15.indicator_choice
+indicator_choise[6] << draw_screen:comb_15.indicator_choice
+indicator_choise[7] << draw_screen:comb_15.indicator_choice
 clk => clk.IN1
 
 
-|calculator|choice_digital_led:choice_dl
+|calculator|draw_screen:comb_15
+clk => clk.IN2
+sdraw => ~NO_FANOUT~
+clear => clear.IN1
+value[0] => value[0].IN1
+value[1] => value[1].IN1
+value[2] => value[2].IN1
+value[3] => value[3].IN1
+indicator[0] <= convert_value_to_digital_led:comb_3.digital_led_out
+indicator[1] <= convert_value_to_digital_led:comb_3.digital_led_out
+indicator[2] <= convert_value_to_digital_led:comb_3.digital_led_out
+indicator[3] <= convert_value_to_digital_led:comb_3.digital_led_out
+indicator[4] <= convert_value_to_digital_led:comb_3.digital_led_out
+indicator[5] <= convert_value_to_digital_led:comb_3.digital_led_out
+indicator[6] <= convert_value_to_digital_led:comb_3.digital_led_out
+indicator[7] <= <GND>
+indicator_choice[0] <= choice_digital_led:choice_dl.bitmap
+indicator_choice[1] <= choice_digital_led:choice_dl.bitmap
+indicator_choice[2] <= choice_digital_led:choice_dl.bitmap
+indicator_choice[3] <= choice_digital_led:choice_dl.bitmap
+indicator_choice[4] <= choice_digital_led:choice_dl.bitmap
+indicator_choice[5] <= choice_digital_led:choice_dl.bitmap
+indicator_choice[6] <= choice_digital_led:choice_dl.bitmap
+indicator_choice[7] <= choice_digital_led:choice_dl.bitmap
+
+
+|calculator|draw_screen:comb_15|convert_value_to_digital_led:comb_3
+clk => digital_led_out_reg[0].CLK
+clk => digital_led_out_reg[1].CLK
+clk => digital_led_out_reg[2].CLK
+clk => digital_led_out_reg[3].CLK
+clk => digital_led_out_reg[4].CLK
+clk => digital_led_out_reg[5].CLK
+clk => digital_led_out_reg[6].CLK
+value[0] => Decoder0.IN3
+value[1] => Decoder0.IN2
+value[2] => Decoder0.IN1
+value[3] => Decoder0.IN0
+digital_led_out[0] <= digital_led_out_reg[0].DB_MAX_OUTPUT_PORT_TYPE
+digital_led_out[1] <= digital_led_out_reg[1].DB_MAX_OUTPUT_PORT_TYPE
+digital_led_out[2] <= digital_led_out_reg[2].DB_MAX_OUTPUT_PORT_TYPE
+digital_led_out[3] <= digital_led_out_reg[3].DB_MAX_OUTPUT_PORT_TYPE
+digital_led_out[4] <= digital_led_out_reg[4].DB_MAX_OUTPUT_PORT_TYPE
+digital_led_out[5] <= digital_led_out_reg[5].DB_MAX_OUTPUT_PORT_TYPE
+digital_led_out[6] <= digital_led_out_reg[6].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|calculator|draw_screen:comb_15|indicator_number:storage_draw_struct
+clk => save_index[0].CLK
+clk => save_index[1].CLK
+clk => save_index[2].CLK
+clk => save_number[0].CLK
+clk => save_number[1].CLK
+clk => save_number[2].CLK
+clk => save_number[3].CLK
+reset => save_index[0].ACLR
+reset => save_index[1].ACLR
+reset => save_index[2].ACLR
+reset => save_number[0].ACLR
+reset => save_number[1].ACLR
+reset => save_number[2].ACLR
+reset => save_number[3].ACLR
+load_number => save_number[3].ENA
+load_number => save_number[2].ENA
+load_number => save_number[1].ENA
+load_number => save_number[0].ENA
+load_index => save_index[2].ENA
+load_index => save_index[1].ENA
+load_index => save_index[0].ENA
+number_in[0] => save_number[0].DATAIN
+number_in[1] => save_number[1].DATAIN
+number_in[2] => save_number[2].DATAIN
+number_in[3] => save_number[3].DATAIN
+index_in[0] => save_index[0].DATAIN
+index_in[1] => save_index[1].DATAIN
+index_in[2] => save_index[2].DATAIN
+number_out[0] <= save_number[0].DB_MAX_OUTPUT_PORT_TYPE
+number_out[1] <= save_number[1].DB_MAX_OUTPUT_PORT_TYPE
+number_out[2] <= save_number[2].DB_MAX_OUTPUT_PORT_TYPE
+number_out[3] <= save_number[3].DB_MAX_OUTPUT_PORT_TYPE
+index_out[0] <= save_index[0].DB_MAX_OUTPUT_PORT_TYPE
+index_out[1] <= save_index[1].DB_MAX_OUTPUT_PORT_TYPE
+index_out[2] <= save_index[2].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|calculator|draw_screen:comb_15|choice_digital_led:choice_dl
 index[2] => bitmap.IN1
 index[2] => bitmap.IN1
 index[2] => bitmap.IN1
@@ -68,26 +153,5 @@ bitmap[3] <= bitmap.DB_MAX_OUTPUT_PORT_TYPE
 bitmap[2] <= bitmap.DB_MAX_OUTPUT_PORT_TYPE
 bitmap[1] <= bitmap.DB_MAX_OUTPUT_PORT_TYPE
 bitmap[0] <= bitmap.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|calculator|convert_value_to_digital_led:comb_15
-clk => digital_led_out_reg[0].CLK
-clk => digital_led_out_reg[1].CLK
-clk => digital_led_out_reg[2].CLK
-clk => digital_led_out_reg[3].CLK
-clk => digital_led_out_reg[4].CLK
-clk => digital_led_out_reg[5].CLK
-clk => digital_led_out_reg[6].CLK
-value[0] => Decoder0.IN3
-value[1] => Decoder0.IN2
-value[2] => Decoder0.IN1
-value[3] => Decoder0.IN0
-digital_led_out[0] <= digital_led_out_reg[0].DB_MAX_OUTPUT_PORT_TYPE
-digital_led_out[1] <= digital_led_out_reg[1].DB_MAX_OUTPUT_PORT_TYPE
-digital_led_out[2] <= digital_led_out_reg[2].DB_MAX_OUTPUT_PORT_TYPE
-digital_led_out[3] <= digital_led_out_reg[3].DB_MAX_OUTPUT_PORT_TYPE
-digital_led_out[4] <= digital_led_out_reg[4].DB_MAX_OUTPUT_PORT_TYPE
-digital_led_out[5] <= digital_led_out_reg[5].DB_MAX_OUTPUT_PORT_TYPE
-digital_led_out[6] <= digital_led_out_reg[6].DB_MAX_OUTPUT_PORT_TYPE
 
 

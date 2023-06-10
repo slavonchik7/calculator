@@ -1,10 +1,10 @@
-Partition Merge Status : Successful - Sat Jun 10 14:57:10 2023
+Partition Merge Status : Successful - Sat Jun 10 20:01:52 2023
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 Revision Name : calculator
 Top-level Entity Name : calculator
 Family : Cyclone IV E
-Total logic elements : 127
-    Total combinational functions : 118
+Total logic elements : 134
+    Total combinational functions : 120
     Dedicated logic registers : 85
 Total registers : 85
 Total pins : 34

@@ -5,8 +5,8 @@ module calculator
 	input wire [7:4] key_in,
 	output wire [3:0] key_out,
 	output wire [7:0] led,
-	output reg [7:0] indicator, /* indicator[7] - it is dot point */
-	output reg [7:0] indicator_choise,
+	output wire [7:0] indicator, /* indicator[7] - it is dot point */
+	output wire [7:0] indicator_choise,
 	input wire clk
 );
 
@@ -36,17 +36,10 @@ initial flag_read_line <= 1'b0;
 
 
 
-reg indicator_choise_reg;
-initial indicator_choise_reg <= 8'hff;
-
-initial indicator <= 8'hff;
-
 reg [2:0] index_num;
 initial index_num <= 3'd4;
 
 reg [3:0] digital_number;
-
-wire [7:0] indicator_wire;
 
 assign led = led_reg;
 assign key_out = key_out_reg;
@@ -57,19 +50,41 @@ wire [7:0] choice_dl_output;
 reg [1:0] key_read_cnt_reg;
 
 
-choice_digital_led choice_dl(index_num, choice_dl_output);
-convert_value_to_digital_led(clk, digital_number, indicator_wire[6:0]);
+/*
+choice_digital_led choice_dl(index_num, indicator_choise);
+convert_value_to_digital_led(clk, digital_number, indicator[6:0]);
+*/
+
+reg draw_clk;
+initial draw_clk <= 1'b0;
+
+reg draw_signal;
+initial draw_signal <= 1'b0;
+
+draw_screen(
+.clk 					(clk)					,
+.sdraw				(draw_signal)		,
+.clear				(1'b0)				,
+.value				(digital_number)	,
+.indicator			(indicator)			,
+.indicator_choice (indicator_choise)
+);
+
+
 
 always @(posedge clk) begin
 	if (counter == 25'd25000000) begin
-		indicator_choise <= choice_dl_output;
 		
+		draw_signal <= 1'b1;
+		/*
+		indicator_choise <= choice_dl_output;
+		 
 		indicator <= indicator_wire;
-		/* 
+		
 		indicator <= ~indicator; 
 		led_reg <= ~led_reg;
 		*/
-		counter <= 0;
+		counter <= 1'b1;
 		index_num <= 3'd4;
 
 		if (digital_number == 4'd9) begin
@@ -115,6 +130,7 @@ always @(posedge clk) begin
 
 	end else begin
 		counter <= counter + 1'b1;
+		draw_signal <= 1'b0;
 	end
 
 	if (counter_fps == 20'd100000) begin

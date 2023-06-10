@@ -1,5 +1,5 @@
 Partition Merge report for calculator
-Sat Jun 10 14:57:10 2023
+Sat Jun 10 20:01:52 2023
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 
 
@@ -38,13 +38,13 @@ refer to the applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Partition Merge Summary                                                              ;
 +------------------------------------+-------------------------------------------------+
-; Partition Merge Status             ; Successful - Sat Jun 10 14:57:10 2023           ;
+; Partition Merge Status             ; Successful - Sat Jun 10 20:01:52 2023           ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Standard Edition ;
 ; Revision Name                      ; calculator                                      ;
 ; Top-level Entity Name              ; calculator                                      ;
 ; Family                             ; Cyclone IV E                                    ;
-; Total logic elements               ; 127                                             ;
-;     Total combinational functions  ; 118                                             ;
+; Total logic elements               ; 134                                             ;
+;     Total combinational functions  ; 120                                             ;
 ;     Dedicated logic registers      ; 85                                              ;
 ; Total registers                    ; 85                                              ;
 ; Total pins                         ; 34                                              ;
@@ -70,17 +70,17 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+-----+--------------------------------+
 ; Statistic                                   ; Top ; hard_block:auto_generated_inst ;
 +---------------------------------------------+-----+--------------------------------+
-; Estimated Total logic elements              ; 127 ; 0                              ;
+; Estimated Total logic elements              ; 134 ; 0                              ;
 ;                                             ;     ;                                ;
-; Total combinational functions               ; 118 ; 0                              ;
+; Total combinational functions               ; 120 ; 0                              ;
 ; Logic element usage by number of LUT inputs ;     ;                                ;
 ;     -- 4 input functions                    ; 27  ; 0                              ;
-;     -- 3 input functions                    ; 5   ; 0                              ;
-;     -- <=2 input functions                  ; 86  ; 0                              ;
+;     -- 3 input functions                    ; 15  ; 0                              ;
+;     -- <=2 input functions                  ; 78  ; 0                              ;
 ;                                             ;     ;                                ;
 ; Logic elements by mode                      ;     ;                                ;
-;     -- normal mode                          ; 75  ; 0                              ;
-;     -- arithmetic mode                      ; 43  ; 0                              ;
+;     -- normal mode                          ; 78  ; 0                              ;
+;     -- arithmetic mode                      ; 42  ; 0                              ;
 ;                                             ;     ;                                ;
 ; Total registers                             ; 85  ; 0                              ;
 ;     -- Dedicated logic registers            ; 85  ; 0                              ;
@@ -99,8 +99,8 @@ refer to the applicable agreement for further details.
 ;     -- Registered Output Connections        ; 0   ; 0                              ;
 ;                                             ;     ;                                ;
 ; Internal Connections                        ;     ;                                ;
-;     -- Total Connections                    ; 529 ; 0                              ;
-;     -- Registered Connections               ; 180 ; 0                              ;
+;     -- Total Connections                    ; 549 ; 0                              ;
+;     -- Registered Connections               ; 208 ; 0                              ;
 ;                                             ;     ;                                ;
 ; External Connections                        ;     ;                                ;
 ;     -- Top                                  ; 0   ; 0                              ;
@@ -277,17 +277,17 @@ Note: Resource usage numbers presented for Partitions containing post-synthesis 
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 127       ;
+; Estimated Total logic elements              ; 134       ;
 ;                                             ;           ;
-; Total combinational functions               ; 118       ;
+; Total combinational functions               ; 120       ;
 ; Logic element usage by number of LUT inputs ;           ;
 ;     -- 4 input functions                    ; 27        ;
-;     -- 3 input functions                    ; 5         ;
-;     -- <=2 input functions                  ; 86        ;
+;     -- 3 input functions                    ; 15        ;
+;     -- <=2 input functions                  ; 78        ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 75        ;
-;     -- arithmetic mode                      ; 43        ;
+;     -- normal mode                          ; 78        ;
+;     -- arithmetic mode                      ; 42        ;
 ;                                             ;           ;
 ; Total registers                             ; 85        ;
 ;     -- Dedicated logic registers            ; 85        ;
@@ -299,8 +299,8 @@ Note: Resource usage numbers presented for Partitions containing post-synthesis 
 ;                                             ;           ;
 ; Maximum fan-out node                        ; clk~input ;
 ; Maximum fan-out                             ; 85        ;
-; Total fan-out                               ; 529       ;
-; Average fan-out                             ; 1.95      ;
+; Total fan-out                               ; 549       ;
+; Average fan-out                             ; 2.01      ;
 +---------------------------------------------+-----------+
 
 
@@ -310,7 +310,7 @@ Note: Resource usage numbers presented for Partitions containing post-synthesis 
 Info: *******************************************************************
 Info: Running Quartus Prime Partition Merge
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
-    Info: Processing started: Sat Jun 10 14:57:10 2023
+    Info: Processing started: Sat Jun 10 20:01:52 2023
 Info: Command: quartus_cdb --read_settings_files=off --write_settings_files=off calculator -c calculator --merge=on
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Warning (35010): Previously generated Fitter netlist for partition "Top" is older than current Synthesis netlist -- using the current Synthesis netlist instead to ensure that the latest source changes are included
@@ -321,13 +321,13 @@ Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
 Warning (21074): Design contains 1 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "button" File: C:/Users/christmas/Desktop/quartus/work/calculator-cyclone4/calculator.v Line: 4
-Info (21057): Implemented 161 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 168 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 6 input pins
     Info (21059): Implemented 28 output pins
-    Info (21061): Implemented 127 logic cells
+    Info (21061): Implemented 134 logic cells
 Info: Quartus Prime Partition Merge was successful. 0 errors, 4 warnings
     Info: Peak virtual memory: 4689 megabytes
-    Info: Processing ended: Sat Jun 10 14:57:10 2023
+    Info: Processing ended: Sat Jun 10 20:01:52 2023
     Info: Elapsed time: 00:00:00
     Info: Total CPU time (on all processors): 00:00:00
 

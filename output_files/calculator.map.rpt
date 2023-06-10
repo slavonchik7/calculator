@@ -1,5 +1,5 @@
 Analysis & Synthesis report for calculator
-Sat Jun 10 14:57:09 2023
+Sat Jun 10 20:01:51 2023
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 
 
@@ -15,12 +15,13 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
   7. Dependent File Changes for Partition Top
   8. Partition for Top-Level Resource Utilization by Entity
   9. Registers Removed During Synthesis
- 10. Removed Registers Triggering Further Register Optimizations
- 11. Multiplexer Restructuring Statistics (Restructuring Performed)
- 12. Partition Dependent Files
- 13. Post-Synthesis Netlist Statistics for Top Partition
- 14. Elapsed Time Per Partition
- 15. Analysis & Synthesis Messages
+ 10. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 11. Partition Dependent Files
+ 12. Post-Synthesis Netlist Statistics for Top Partition
+ 13. Port Connectivity Checks: "draw_screen:comb_15|indicator_number:storage_draw_struct"
+ 14. Port Connectivity Checks: "draw_screen:comb_15"
+ 15. Elapsed Time Per Partition
+ 16. Analysis & Synthesis Messages
 
 
 
@@ -46,7 +47,7 @@ refer to the applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sat Jun 10 14:57:09 2023           ;
+; Analysis & Synthesis Status        ; Successful - Sat Jun 10 20:01:51 2023           ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Standard Edition ;
 ; Revision Name                      ; calculator                                      ;
 ; Top-level Entity Name              ; calculator                                      ;
@@ -174,6 +175,8 @@ refer to the applicable agreement for further details.
 ; calculator.v                                ; yes             ; User Verilog HDL File  ; C:/Users/christmas/Desktop/quartus/work/calculator-cyclone4/calculator.v                                ;         ;
 ; output_files/choine_digital_led.v           ; yes             ; User Verilog HDL File  ; C:/Users/christmas/Desktop/quartus/work/calculator-cyclone4/output_files/choine_digital_led.v           ;         ;
 ; output_files/convert_value_to_digital_led.v ; yes             ; User Verilog HDL File  ; C:/Users/christmas/Desktop/quartus/work/calculator-cyclone4/output_files/convert_value_to_digital_led.v ;         ;
+; indicator_number.v                          ; yes             ; User Verilog HDL File  ; C:/Users/christmas/Desktop/quartus/work/calculator-cyclone4/indicator_number.v                          ;         ;
+; draw_screen.v                               ; yes             ; User Verilog HDL File  ; C:/Users/christmas/Desktop/quartus/work/calculator-cyclone4/draw_screen.v                               ;         ;
 +---------------------------------------------+-----------------+------------------------+---------------------------------------------------------------------------------------------------------+---------+
 
 
@@ -186,57 +189,41 @@ refer to the applicable agreement for further details.
 +----------------+-------------+-------------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------+
-; Dependent File Changes for Partition Top                                                                                      ;
-+-----------+--------------+-------------------+----------+----------------------------------+----------------------------------+
-; Hierarchy ; File Name    ; Relative Location ; Change   ; Old                              ; New                              ;
-+-----------+--------------+-------------------+----------+----------------------------------+----------------------------------+
-; |         ; calculator.v ; Project Directory ; Checksum ; 45dad4433799e0459b004d5a5a8c036a ; 2210b6223c057d89ba7a8e88ff1a6205 ;
-+-----------+--------------+-------------------+----------+----------------------------------+----------------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Dependent File Changes for Partition Top                                                                                                 ;
++---------------------+---------------+-------------------+----------+----------------------------------+----------------------------------+
+; Hierarchy           ; File Name     ; Relative Location ; Change   ; Old                              ; New                              ;
++---------------------+---------------+-------------------+----------+----------------------------------+----------------------------------+
+; draw_screen:comb_15 ; draw_screen.v ; Project Directory ; Checksum ; 4f4bd2a0d00850d7b77d789ee3b1cf07 ; fb53b1c04993c258e3216ccad0fba989 ;
++---------------------+---------------+-------------------+----------+----------------------------------+----------------------------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Partition for Top-Level Resource Utilization by Entity                                                                                                                                                                                                                ;
-+-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------+------------------------------+--------------+
-; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                              ; Entity Name                  ; Library Name ;
-+-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------+------------------------------+--------------+
-; |calculator                               ; 136 (129)           ; 85 (78)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |calculator                                      ; calculator                   ; work         ;
-;    |convert_value_to_digital_led:comb_15| ; 7 (7)               ; 7 (7)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |calculator|convert_value_to_digital_led:comb_15 ; convert_value_to_digital_led ; work         ;
-+-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------+------------------------------+--------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Partition for Top-Level Resource Utilization by Entity                                                                                                                                                                                                                                       ;
++----------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------+------------------------------+--------------+
+; Compilation Hierarchy Node                   ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                  ; Entity Name                  ; Library Name ;
++----------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------+------------------------------+--------------+
+; |calculator                                  ; 137 (112)           ; 85 (69)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |calculator                                                          ; calculator                   ; work         ;
+;    |draw_screen:comb_15|                     ; 25 (2)              ; 16 (2)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |calculator|draw_screen:comb_15                                      ; draw_screen                  ; work         ;
+;       |choice_digital_led:choice_dl|         ; 15 (15)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |calculator|draw_screen:comb_15|choice_digital_led:choice_dl         ; choice_digital_led           ; work         ;
+;       |convert_value_to_digital_led:comb_3|  ; 7 (7)               ; 7 (7)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |calculator|draw_screen:comb_15|convert_value_to_digital_led:comb_3  ; convert_value_to_digital_led ; work         ;
+;       |indicator_number:storage_draw_struct| ; 1 (1)               ; 7 (7)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |calculator|draw_screen:comb_15|indicator_number:storage_draw_struct ; indicator_number             ; work         ;
++----------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------+------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+---------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                              ;
-+----------------------------------------+----------------------------------------+
-; Register name                          ; Reason for Removal                     ;
-+----------------------------------------+----------------------------------------+
-; key_out_reg[0,1]                       ; Stuck at VCC due to stuck port data_in ;
-; key_out_reg[2]                         ; Stuck at GND due to stuck port data_in ;
-; key_out_reg[3]                         ; Stuck at VCC due to stuck port data_in ;
-; index_num[0,1]                         ; Stuck at GND due to stuck port data_in ;
-; index_num[2]                           ; Stuck at VCC due to stuck port data_in ;
-; indicator_choise[0]~reg0               ; Stuck at VCC due to stuck port data_in ;
-; indicator_choise[1]~reg0               ; Stuck at VCC due to stuck port data_in ;
-; indicator_choise[2]~reg0               ; Stuck at VCC due to stuck port data_in ;
-; indicator_choise[3]~reg0               ; Stuck at GND due to stuck port data_in ;
-; indicator_choise[4]~reg0               ; Stuck at VCC due to stuck port data_in ;
-; indicator_choise[5]~reg0               ; Stuck at VCC due to stuck port data_in ;
-; indicator_choise[6]~reg0               ; Stuck at VCC due to stuck port data_in ;
-; indicator_choise[7]~reg0               ; Stuck at VCC due to stuck port data_in ;
-; Total Number of Removed Registers = 15 ;                                        ;
-+----------------------------------------+----------------------------------------+
-
-
-+---------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                               ;
-+---------------+---------------------------+-------------------------------------------------------------------------------+
-; Register name ; Reason for Removal        ; Registers Removed due to This Register                                        ;
-+---------------+---------------------------+-------------------------------------------------------------------------------+
-; index_num[0]  ; Stuck at GND              ; indicator_choise[0]~reg0, indicator_choise[1]~reg0, indicator_choise[2]~reg0, ;
-;               ; due to stuck port data_in ; indicator_choise[3]~reg0, indicator_choise[4]~reg0, indicator_choise[5]~reg0, ;
-;               ;                           ; indicator_choise[6]~reg0, indicator_choise[7]~reg0                            ;
-+---------------+---------------------------+-------------------------------------------------------------------------------+
++----------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                         ;
++---------------------------------------+------------------------------------------------------------------------------------+
+; Register name                         ; Reason for Removal                                                                 ;
++---------------------------------------+------------------------------------------------------------------------------------+
+; key_out_reg[0,1]                      ; Stuck at VCC due to stuck port data_in                                             ;
+; key_out_reg[2]                        ; Stuck at GND due to stuck port data_in                                             ;
+; key_out_reg[3]                        ; Stuck at VCC due to stuck port data_in                                             ;
+; draw_screen:comb_15|draw_index[0]     ; Merged with draw_screen:comb_15|indicator_number:storage_draw_struct|save_index[0] ;
+; counter[0]                            ; Merged with draw_screen:comb_15|indicator_number:storage_draw_struct|save_index[0] ;
+; Total Number of Removed Registers = 6 ;                                                                                    ;
++---------------------------------------+------------------------------------------------------------------------------------+
 
 
 +---------------------------------------------------------------------------------------------------------------------------------------------+
@@ -253,8 +240,10 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +---------------------------------------------+-------------------+---------+----------------------------------+
 ; File                                        ; Location          ; Library ; Checksum                         ;
 +---------------------------------------------+-------------------+---------+----------------------------------+
-; calculator.v                                ; Project Directory ; work    ; 2210b6223c057d89ba7a8e88ff1a6205 ;
-; output_files/choine_digital_led.v           ; Project Directory ; work    ; 2c813d8f05135fcb14a3bd4c320909e0 ;
+; calculator.v                                ; Project Directory ; work    ; 08c6f9213fa64d42af4843b7c6f02469 ;
+; draw_screen.v                               ; Project Directory ; work    ; fb53b1c04993c258e3216ccad0fba989 ;
+; indicator_number.v                          ; Project Directory ; work    ; 0cce7153e0772db4189e699b44e4b205 ;
+; output_files/choine_digital_led.v           ; Project Directory ; work    ; 074e4791e521a3b2b516229cde940b0b ;
 ; output_files/convert_value_to_digital_led.v ; Project Directory ; work    ; ae6b7785d82dce6f4b4ffa86fa23c532 ;
 +---------------------------------------------+-------------------+---------+----------------------------------+
 
@@ -266,21 +255,41 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------------------+-----------------------------+
 ; boundary_port         ; 34                          ;
 ; cycloneiii_ff         ; 85                          ;
-;     ENA               ; 33                          ;
-;     plain             ; 52                          ;
-; cycloneiii_lcell_comb ; 136                         ;
-;     arith             ; 43                          ;
-;         2 data inputs ; 43                          ;
-;     normal            ; 93                          ;
+;     ENA               ; 25                          ;
+;     plain             ; 60                          ;
+; cycloneiii_lcell_comb ; 137                         ;
+;     arith             ; 42                          ;
+;         2 data inputs ; 41                          ;
+;         3 data inputs ; 1                           ;
+;     normal            ; 95                          ;
 ;         0 data inputs ; 2                           ;
-;         1 data inputs ; 34                          ;
+;         1 data inputs ; 27                          ;
 ;         2 data inputs ; 25                          ;
-;         3 data inputs ; 5                           ;
+;         3 data inputs ; 14                          ;
 ;         4 data inputs ; 27                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 5.00                        ;
-; Average LUT depth     ; 2.81                        ;
+; Average LUT depth     ; 2.80                        ;
 +-----------------------+-----------------------------+
+
+
++--------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "draw_screen:comb_15|indicator_number:storage_draw_struct" ;
++-------------+-------+----------+-----------------------------------------------------+
+; Port        ; Type  ; Severity ; Details                                             ;
++-------------+-------+----------+-----------------------------------------------------+
+; load_number ; Input ; Info     ; Stuck at VCC                                        ;
+; load_index  ; Input ; Info     ; Stuck at VCC                                        ;
++-------------+-------+----------+-----------------------------------------------------+
+
+
++-------------------------------------------------+
+; Port Connectivity Checks: "draw_screen:comb_15" ;
++-------+-------+----------+----------------------+
+; Port  ; Type  ; Severity ; Details              ;
++-------+-------+----------+----------------------+
+; clear ; Input ; Info     ; Stuck at GND         ;
++-------+-------+----------+----------------------+
 
 
 +-------------------------------+
@@ -298,7 +307,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
-    Info: Processing started: Sat Jun 10 14:57:03 2023
+    Info: Processing started: Sat Jun 10 20:01:45 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off calculator -c calculator
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
@@ -308,14 +317,22 @@ Info (12021): Found 1 design units, including 1 entities, in source file output_
     Info (12023): Found entity 1: choice_digital_led File: C:/Users/christmas/Desktop/quartus/work/calculator-cyclone4/output_files/choine_digital_led.v Line: 3
 Info (12021): Found 1 design units, including 1 entities, in source file output_files/convert_value_to_digital_led.v
     Info (12023): Found entity 1: convert_value_to_digital_led File: C:/Users/christmas/Desktop/quartus/work/calculator-cyclone4/output_files/convert_value_to_digital_led.v Line: 2
-Critical Warning (10846): Verilog HDL Instantiation warning at calculator.v(61): instance has no name File: C:/Users/christmas/Desktop/quartus/work/calculator-cyclone4/calculator.v Line: 61
+Info (12021): Found 1 design units, including 1 entities, in source file indicator_number.v
+    Info (12023): Found entity 1: indicator_number File: C:/Users/christmas/Desktop/quartus/work/calculator-cyclone4/indicator_number.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file draw_screen.v
+    Info (12023): Found entity 1: draw_screen File: C:/Users/christmas/Desktop/quartus/work/calculator-cyclone4/draw_screen.v Line: 2
+Critical Warning (10846): Verilog HDL Instantiation warning at draw_screen.v(31): instance has no name File: C:/Users/christmas/Desktop/quartus/work/calculator-cyclone4/draw_screen.v Line: 31
+Critical Warning (10846): Verilog HDL Instantiation warning at calculator.v(71): instance has no name File: C:/Users/christmas/Desktop/quartus/work/calculator-cyclone4/calculator.v Line: 71
 Info (12127): Elaborating entity "calculator" for the top level hierarchy
 Warning (10036): Verilog HDL or VHDL warning at calculator.v(23): object "button_reg" assigned a value but never read File: C:/Users/christmas/Desktop/quartus/work/calculator-cyclone4/calculator.v Line: 23
-Warning (10036): Verilog HDL or VHDL warning at calculator.v(39): object "indicator_choise_reg" assigned a value but never read File: C:/Users/christmas/Desktop/quartus/work/calculator-cyclone4/calculator.v Line: 39
-Warning (10230): Verilog HDL assignment warning at calculator.v(40): truncated value with size 8 to match size of target (1) File: C:/Users/christmas/Desktop/quartus/work/calculator-cyclone4/calculator.v Line: 40
-Warning (10030): Net "indicator_wire[7]" at calculator.v(49) has no driver or initial value, using a default initial value '0' File: C:/Users/christmas/Desktop/quartus/work/calculator-cyclone4/calculator.v Line: 49
-Info (12128): Elaborating entity "choice_digital_led" for hierarchy "choice_digital_led:choice_dl" File: C:/Users/christmas/Desktop/quartus/work/calculator-cyclone4/calculator.v Line: 60
-Info (12128): Elaborating entity "convert_value_to_digital_led" for hierarchy "convert_value_to_digital_led:comb_15" File: C:/Users/christmas/Desktop/quartus/work/calculator-cyclone4/calculator.v Line: 61
+Warning (10036): Verilog HDL or VHDL warning at calculator.v(39): object "index_num" assigned a value but never read File: C:/Users/christmas/Desktop/quartus/work/calculator-cyclone4/calculator.v Line: 39
+Warning (10036): Verilog HDL or VHDL warning at calculator.v(58): object "draw_clk" assigned a value but never read File: C:/Users/christmas/Desktop/quartus/work/calculator-cyclone4/calculator.v Line: 58
+Info (12128): Elaborating entity "draw_screen" for hierarchy "draw_screen:comb_15" File: C:/Users/christmas/Desktop/quartus/work/calculator-cyclone4/calculator.v Line: 71
+Warning (10034): Output port "indicator[7]" at draw_screen.v(8) has no driver File: C:/Users/christmas/Desktop/quartus/work/calculator-cyclone4/draw_screen.v Line: 8
+Info (12128): Elaborating entity "convert_value_to_digital_led" for hierarchy "draw_screen:comb_15|convert_value_to_digital_led:comb_3" File: C:/Users/christmas/Desktop/quartus/work/calculator-cyclone4/draw_screen.v Line: 31
+Info (12128): Elaborating entity "indicator_number" for hierarchy "draw_screen:comb_15|indicator_number:storage_draw_struct" File: C:/Users/christmas/Desktop/quartus/work/calculator-cyclone4/draw_screen.v Line: 42
+Warning (10230): Verilog HDL assignment warning at indicator_number.v(27): truncated value with size 4 to match size of target (3) File: C:/Users/christmas/Desktop/quartus/work/calculator-cyclone4/indicator_number.v Line: 27
+Info (12128): Elaborating entity "choice_digital_led" for hierarchy "draw_screen:comb_15|choice_digital_led:choice_dl" File: C:/Users/christmas/Desktop/quartus/work/calculator-cyclone4/draw_screen.v Line: 47
 Info (12205): 1 design partition requires Analysis and Synthesis
     Info (12211): Partition "Top" requires synthesis because there were changes to its dependent source files
 Info (12209): No design partitions will skip synthesis in the current incremental compilation
@@ -325,23 +342,16 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "key_out[1]" is stuck at VCC File: C:/Users/christmas/Desktop/quartus/work/calculator-cyclone4/calculator.v Line: 6
     Warning (13410): Pin "key_out[2]" is stuck at GND File: C:/Users/christmas/Desktop/quartus/work/calculator-cyclone4/calculator.v Line: 6
     Warning (13410): Pin "key_out[3]" is stuck at VCC File: C:/Users/christmas/Desktop/quartus/work/calculator-cyclone4/calculator.v Line: 6
-    Warning (13410): Pin "indicator_choise[0]" is stuck at VCC File: C:/Users/christmas/Desktop/quartus/work/calculator-cyclone4/calculator.v Line: 63
-    Warning (13410): Pin "indicator_choise[1]" is stuck at VCC File: C:/Users/christmas/Desktop/quartus/work/calculator-cyclone4/calculator.v Line: 63
-    Warning (13410): Pin "indicator_choise[2]" is stuck at VCC File: C:/Users/christmas/Desktop/quartus/work/calculator-cyclone4/calculator.v Line: 63
-    Warning (13410): Pin "indicator_choise[3]" is stuck at GND File: C:/Users/christmas/Desktop/quartus/work/calculator-cyclone4/calculator.v Line: 63
-    Warning (13410): Pin "indicator_choise[4]" is stuck at VCC File: C:/Users/christmas/Desktop/quartus/work/calculator-cyclone4/calculator.v Line: 63
-    Warning (13410): Pin "indicator_choise[5]" is stuck at VCC File: C:/Users/christmas/Desktop/quartus/work/calculator-cyclone4/calculator.v Line: 63
-    Warning (13410): Pin "indicator_choise[6]" is stuck at VCC File: C:/Users/christmas/Desktop/quartus/work/calculator-cyclone4/calculator.v Line: 63
-    Warning (13410): Pin "indicator_choise[7]" is stuck at VCC File: C:/Users/christmas/Desktop/quartus/work/calculator-cyclone4/calculator.v Line: 63
+    Warning (13410): Pin "indicator[7]" is stuck at GND File: C:/Users/christmas/Desktop/quartus/work/calculator-cyclone4/calculator.v Line: 8
 Info (286030): Timing-Driven Synthesis is running
-Info (21057): Implemented 179 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 185 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 6 input pins
     Info (21059): Implemented 28 output pins
-    Info (21061): Implemented 145 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 19 warnings
-    Info: Peak virtual memory: 4787 megabytes
-    Info: Processing ended: Sat Jun 10 14:57:09 2023
+    Info (21061): Implemented 151 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 14 warnings
+    Info: Peak virtual memory: 4782 megabytes
+    Info: Processing ended: Sat Jun 10 20:01:51 2023
     Info: Elapsed time: 00:00:06
-    Info: Total CPU time (on all processors): 00:00:12
+    Info: Total CPU time (on all processors): 00:00:13
 
 
