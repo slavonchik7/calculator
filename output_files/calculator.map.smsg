@@ -1,0 +1,1 @@
+Warning (10268): Verilog HDL information at calculator.v(32): always construct contains both blocking and non-blocking assignments File: C:/Users/christmas/Desktop/quartus/work/calculator-cyclone4/calculator.v Line: 32
